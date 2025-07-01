@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background: #f4f8fb;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.ExcelGUIController">
+    <content>
+        <VBox alignment="CENTER" spacing="18" style="-fx-background-color: #f4f8fb; -fx-padding: 30; -fx-border-radius: 18; -fx-background-radius: 18;">
+            <HBox alignment="CENTER" spacing="10" style="-fx-padding: 0 0 0 0;" VBox.vgrow="NEVER">
+                <Label text="Data-HUB" alignment="CENTER_LEFT" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #2a3b4c; -fx-padding: 0 0 0 10;" />
+                <Pane HBox.hgrow="ALWAYS" />
+                <ImageView fitHeight="36" fitWidth="120" pickOnBounds="true">
+                    <image>
+                        <Image preserveRatio="true" url="@images/upeu_logo.png" />
+                    </image>
+                </ImageView>
+            </HBox>
+            <HBox alignment="CENTER" spacing="10" VBox.vgrow="NEVER">
+                <VBox alignment="CENTER_LEFT" prefWidth="150">
+                    <Button fx:id="btnImportar" style="-fx-background-color: #4fc3f7; -fx-text-fill: white; -fx-font-size: 13px; -fx-background-radius: 8; -fx-padding: 5 14; -fx-cursor: hand;" text="Importar Excel" />
+                </VBox>
+                <Pane HBox.hgrow="ALWAYS" />
+                <Label fx:id="lblExcelTitulo" text="" alignment="CENTER" style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2a3b4c; -fx-padding: 0 20 0 20;" />
+                <Pane HBox.hgrow="ALWAYS" />
+                <VBox alignment="CENTER_RIGHT" prefWidth="150">
+                    <Button fx:id="btnExportar" style="-fx-background-color: #81c784; -fx-text-fill: white; -fx-font-size: 13px; -fx-background-radius: 8; -fx-padding: 5 14; -fx-cursor: hand;" text="Exportar Excel" />
+                </VBox>
+            </HBox>
+            <GridPane hgap="18" alignment="CENTER" style="-fx-padding: 8 0 8 0;" VBox.vgrow="NEVER">
+                <columnConstraints>
+                    <ColumnConstraints halignment="CENTER" percentWidth="14.28" />
+                    <ColumnConstraints halignment="CENTER" percentWidth="14.28" />
+                    <ColumnConstraints halignment="CENTER" percentWidth="14.28" />
+                    <ColumnConstraints halignment="CENTER" percentWidth="14.28" />
+                    <ColumnConstraints halignment="CENTER" percentWidth="14.28" />
+                    <ColumnConstraints halignment="CENTER" percentWidth="14.28" />
+                    <ColumnConstraints halignment="CENTER" percentWidth="14.28" />
+                </columnConstraints>
+                <RadioButton fx:id="radio1" text="Descriptivos" GridPane.columnIndex="0" style="-fx-background-radius: 8; -fx-font-size: 13px; -fx-padding: 5 16;" />
+                <RadioButton fx:id="radio2" text="Hipotesis" GridPane.columnIndex="1" style="-fx-background-radius: 8; -fx-font-size: 13px; -fx-padding: 5 16;" />
+                <RadioButton fx:id="radio3" text="Correlacion" GridPane.columnIndex="2" style="-fx-background-radius: 8; -fx-font-size: 13px; -fx-padding: 5 16;" />
+                <RadioButton fx:id="radio4" text="Regresion" GridPane.columnIndex="3" style="-fx-background-radius: 8; -fx-font-size: 13px; -fx-padding: 5 16;" />
+                <RadioButton fx:id="radio5" text="Mediacion/Moderacion" GridPane.columnIndex="4" style="-fx-background-radius: 8; -fx-font-size: 13px; -fx-padding: 5 16;" />
+                <RadioButton fx:id="radio6" text="PCA" GridPane.columnIndex="5" style="-fx-background-radius: 8; -fx-font-size: 13px; -fx-padding: 5 16;" />
+                <RadioButton fx:id="radio7" text="Fiabilidad" GridPane.columnIndex="6" style="-fx-background-radius: 8; -fx-font-size: 13px; -fx-padding: 5 16;" />
+            </GridPane>
+            <VBox fx:id="vboxCorrelacion" visible="false" managed="false" spacing="6" alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;" VBox.vgrow="NEVER">
+                <GridPane hgap="24" vgap="6">
+                    <rowConstraints>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                    </rowConstraints>
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="220"/>
+                        <ColumnConstraints minWidth="220"/>
+                    </columnConstraints>
+                    <Label text="Pearson" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbPearson" selected="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                    <Label text="Spearman" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbSpearman" selected="false" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    <Label text="Punto - Biserial" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbPuntoBiserial" selected="false" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    <Label text="Tau de Kendall" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbKendall" selected="false" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                </GridPane>
+            </VBox>
+            <VBox fx:id="vboxRegresion" visible="false" managed="false" spacing="6" alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;" VBox.vgrow="NEVER">
+                <GridPane hgap="24" vgap="6">
+                    <rowConstraints>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                    </rowConstraints>
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="220"/>
+                        <ColumnConstraints minWidth="220"/>
+                    </columnConstraints>
+                    <Label text="Regresión lineal" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbRegresionLineal" selected="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                    <Label text="Regresión logística" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbRegresionLogistica" selected="false" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                </GridPane>
+            </VBox>
+            <HBox spacing="18" alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
+                <TableView fx:id="tablaExcel" VBox.vgrow="ALWAYS" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #e0e0e0; -fx-border-width: 1;" minWidth="600" prefWidth="800">
+                    <!-- Las columnas se agregarán dinámicamente en el controlador -->
+                </TableView>
+                <TableView fx:id="tablaResultados" prefWidth="320" VBox.vgrow="ALWAYS" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #bdbdbd; -fx-border-width: 1;" visible="false" managed="false">
+                    <columns>
+                        <TableColumn fx:id="colVar" text="Variable" prefWidth="100" />
+                        <TableColumn fx:id="colEstadistica" text="Estadística" prefWidth="120" />
+                        <TableColumn fx:id="colResultado" text="Resultado" prefWidth="100" />
+                    </columns>
+                </TableView>
+            </HBox>
+            <VBox fx:id="vboxVariablesTipo" visible="false" managed="false" spacing="8" alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;" VBox.vgrow="NEVER">
+                <GridPane hgap="60" vgap="4" alignment="CENTER_LEFT">
+                    <Label text="Variables metricas" style="-fx-font-size: 15px; -fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <Label text="Variables ordinales" style="-fx-font-size: 15px; -fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                    <Label text="Variables nominales" style="-fx-font-size: 15px; -fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                    <HBox fx:id="hboxMetricas" spacing="8" alignment="CENTER_LEFT" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <HBox fx:id="hboxOrdinales" spacing="8" alignment="CENTER_LEFT" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    <HBox fx:id="hboxNominales" spacing="8" alignment="CENTER_LEFT" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                </GridPane>
+            </VBox>
+            <VBox fx:id="vboxDescriptivos" visible="false" managed="false" spacing="6" alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;" VBox.vgrow="NEVER">
+                <GridPane hgap="24" vgap="6">
+                    <rowConstraints>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                    </rowConstraints>
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="180"/>
+                        <ColumnConstraints minWidth="180"/>
+                    </columnConstraints>
+                    <Label text="Valor Medio" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbValorMedio" selected="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                    <Label text="Mediana" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbMediana" selected="false" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    <Label text="Moda" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbModa" selected="false" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    <Label text="Suma" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbSuma" selected="false" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                    <Label text="Desviacion Tipica" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbDesviacion" selected="false" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                    <Label text="Varianza" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbVarianza" selected="false" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                    <Label text="Minimo y Maximo" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbMinMax" selected="false" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                    <Label text="Rango" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbRango" selected="false" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+                    <Label text="Quartil 1,2y3" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                    <CheckBox fx:id="cbQuartil" selected="false" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                    <Label text="Asimetria" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                    <CheckBox fx:id="cbAsimetria" selected="false" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+                    <Label text="Curtosis" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                    <CheckBox fx:id="cbCurtosis" selected="false" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+                    <Label text="Numero de valores validos." GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+                    <CheckBox fx:id="cbNumValidos" selected="false" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+                    <Label text="Intervalo de confianza del 95%." GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+                    <CheckBox fx:id="cbIC95" selected="false" GridPane.rowIndex="4" GridPane.columnIndex="3"/>
+                    <Label text="Mean ± Std" GridPane.rowIndex="5" GridPane.columnIndex="2"/>
+                    <CheckBox fx:id="cbMeanStd" selected="false" GridPane.rowIndex="5" GridPane.columnIndex="3"/>
+                    <Label text="Prueba de distribución normal." GridPane.rowIndex="6" GridPane.columnIndex="2"/>
+                    <CheckBox fx:id="cbNormalidad" selected="false" GridPane.rowIndex="6" GridPane.columnIndex="3"/>
+                </GridPane>
+            </VBox>
+            <VBox fx:id="vboxHipotesis" visible="false" managed="false" spacing="6" alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;" VBox.vgrow="NEVER">
+                <GridPane hgap="24" vgap="6">
+                    <rowConstraints>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                    </rowConstraints>
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="220"/>
+                        <ColumnConstraints minWidth="220"/>
+                    </columnConstraints>
+                    <Label text="Prueba t" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbTTest" selected="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                    <Label text="Prueba t pareada" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbTTestPareada" selected="false" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    <Label text="Prueba t de una muestra" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbTTestUnaMuestra" selected="false" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    <Label text="Prueba U de Mann-Whitney" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbMannWhitney" selected="false" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                    <Label text="Prueba chi-cuadrado" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbChiCuadrado" selected="false" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                    <Label text="ANOVA" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbAnova" selected="false" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                    <Label text="ANOVA de 3 vías" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbAnova3Vias" selected="false" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                    <Label text="ANOVA de modelo mixto" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbAnovaMixto" selected="false" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+                    <Label text="Prueba de Kruskal-Wallis" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbKruskalWallis" selected="false" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+                    <Label text="Prueba de Friedman" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbFriedman" selected="false" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+                    <Label text="Prueba Binomial" GridPane.rowIndex="10" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbBinomial" selected="false" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
+                    <Label text="Prueba de Wilcoxon" GridPane.rowIndex="11" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbWilcoxon" selected="false" GridPane.rowIndex="11" GridPane.columnIndex="1"/>
+                </GridPane>
+            </VBox>
+            <VBox fx:id="vboxMediacion" visible="false" managed="false" spacing="6" alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;" VBox.vgrow="NEVER">
+                <GridPane hgap="24" vgap="6">
+                    <rowConstraints>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                    </rowConstraints>
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="220"/>
+                        <ColumnConstraints minWidth="220"/>
+                    </columnConstraints>
+                    <Label text="Análisis de moderación" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbModeracion" selected="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                    <Label text="Análisis de mediación" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbMediacion" selected="false" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                </GridPane>
+            </VBox>
+            <VBox fx:id="vboxGraficos" spacing="6" alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;" VBox.vgrow="NEVER">
+                <Label text="Gráficos" style="-fx-font-size: 15px; -fx-font-weight: bold;" />
+                <HBox spacing="12">
+                    <CheckBox fx:id="cbHistograma" text="Histograma" />
+                    <CheckBox fx:id="cbBoxPlot" text="Diagrama de caja" />
+                    <CheckBox fx:id="cbViolin" text="Diagrama de violines" />
+                    <CheckBox fx:id="cbRaincloud" text="Raincloud Plot" />
+                    <CheckBox fx:id="cbQQ" text="Diagrama Q-Q" />
+                    <CheckBox fx:id="cbProbNormal" text="Gráfico de probabilidad normal" />
+                    <CheckBox fx:id="cbLineas" text="Diagrama de líneas" />
+                </HBox>
+            </VBox>
+            <TabPane fx:id="tabPaneGraficos" VBox.vgrow="ALWAYS" visible="false" managed="false" />
+            <Button fx:id="btnExportarGraficos" text="Exportar gráficos" style="-fx-background-color: #ffb300; -fx-text-fill: white; -fx-font-size: 13px; -fx-background-radius: 8; -fx-padding: 5 14; -fx-cursor: hand;" alignment="CENTER" VBox.vgrow="NEVER" />
+            <VBox fx:id="vboxPCA" visible="false" managed="false" spacing="6" alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;" VBox.vgrow="NEVER">
+                <GridPane hgap="24" vgap="6">
+                    <rowConstraints>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                    </rowConstraints>
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="220"/>
+                        <ColumnConstraints minWidth="220"/>
+                    </columnConstraints>
+                    <Label text="Análisis de factores" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbFactores" selected="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                    <Label text="Análisis de componentes principales" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbComponentes" selected="false" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                </GridPane>
+            </VBox>
+            <VBox fx:id="vboxFiabilidad" visible="false" managed="false" spacing="6" alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;" VBox.vgrow="NEVER">
+                <GridPane hgap="24" vgap="6">
+                    <rowConstraints>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                        <RowConstraints minHeight="24"/>
+                    </rowConstraints>
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="220"/>
+                        <ColumnConstraints minWidth="220"/>
+                    </columnConstraints>
+                    <Label text="Alfa de Cronbach" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbAlfaCronbach" selected="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                    <Label text="Kappa de Cohen" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbKappaCohen" selected="false" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    <Label text="Kappa de Fleiss" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbKappaFleiss" selected="false" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    <Label text="Tau de Kendall" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbTauKendall" selected="false" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                    <Label text="W de Kendall" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbWKendall" selected="false" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                    <Label text="Correlación intraclase" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                    <CheckBox fx:id="cbCorrelacionIntraclase" selected="false" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                </GridPane>
+            </VBox>
+        </VBox>
+    </content>
+</ScrollPane>
